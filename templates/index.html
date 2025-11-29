@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timetable Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-top: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        textarea, input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0 20px;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Timetable Generator</h1>
+    <form action="/generate_timetable" method="POST">
+        <label for="years">Number of Years:</label>
+        <input type="number" name="years" required>
+
+        <label for="batches">Batches (list):</label>
+        <input type="text" name="batches" placeholder="[2, 2]">
+
+        <label for="periods">Periods Per Day:</label>
+        <input type="number" name="periods" value="8" required>
+
+        <label for="start_times">Start Time of Each Period (list):</label>
+        <input type="text" name="start_times" placeholder="['9:00', '9:50', '10:40', ...]">
+
+        <label for="credits">Subject Credits (list of dicts):</label>
+        <textarea name="credits" rows="3" placeholder="[{'Math': 3, 'Physics': 3}, {'Chemistry': 3, 'Biology': 3}]"></textarea>
+
+        <label for="commonCredits">Common Courses (list of lists):</label>
+        <textarea name="commonCredits" rows="3" placeholder="[[], ['Chemistry']]"></textarea>
+
+        <label for="teachers">Teacher Mapping (list of list of dicts):</label>
+        <textarea name="teachers" rows="4" placeholder="[[{'Math': 'T1', 'Physics': 'T2'}], [{'Chemistry': 'T3', 'Biology': 'T4'}]]"></textarea>
+
+        <button type="submit">Generate Timetable</button>
+    </form>
+</body>
+</html>
